@@ -158,8 +158,10 @@ int main(){
 
     printf("\nResult time is ");
     if(hour==0) printf("00");
+    else if (hour<10) printf("0%d",hour);
     else printf("%d",hour);
     if(minute==0) printf("00");
+    else if (minute<10) printf("0%d",minute);
     else printf("%d",minute);
     printf("\n");
     return 0;
