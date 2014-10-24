@@ -13,5 +13,3 @@ The program will add the time duration to the time of day, and the result is pri
 (always as a valid 4 digit time). For example, in the above case, the answer should be 1730, which is the time at 
 3 hours and 45 minutes after 1345. You should consider cases like: starting time is 2300 and duration is 200. In 
 this case, the end time will be 0100, not 2500. 
-Add as many inline comments in your program as you can to make it well documented and easy to be 
-understood by anyone who reads it. 
