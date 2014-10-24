@@ -65,14 +65,13 @@ int main(){
                     isInvalidFlag=1;
                 }
                 else if(minute>59 || minute < 0) {
-                    printf("\nError: minute must between 0 to 23.\n");
+                    printf("\nError: minute must between 0 to 59.\n");
                     isInvalidFlag=1;
                 }
                 /*All condition satisfied*/
                 else{
-                    printf("All good!");
+                    printf("The time of day you entered is %d:%d",hour,minute);
                 }
-                printf("hour:%d , minute: %d",hour,minute);
             }
         }
     }while(isInvalidFlag==1);
@@ -123,18 +122,20 @@ int main(){
                     printf("\nError: Digit of number %d is wrong.\n",digit2);
                     isInvalidFlag2=1;
                 }
-                else if(minute2>59 || minute2 < 0) {
-                    printf("\nError: minute must between 0 to 23.\n");
+                else if(minute2>59 || minute2 < -59) {
+                    printf("\nError: \"%d\" minute must between 0 to 59. %d \n",minute2,hour2);
                     isInvalidFlag2=1;
                 }
                 /*All condition satisfied*/
                 else{
-                    printf("All good!");
+                    printf("The time duration you entered is %d hours, %d minutes",hour2,minute2);
                 }
-                printf("hour:%d , minute: %d",hour2,minute2);
             }
         }
     }while(isInvalidFlag2==1);
+    /*Load data finish*/
+
+    /*Start time logic*/
     return 0;
 
 }
