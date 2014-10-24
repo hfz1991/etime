@@ -15,6 +15,15 @@ int main(){
     printf("\nThis is an small e-time program");
     do
     {
+        //if error prompt error message and initialise value
+        if(isInvalidFlag==1){
+            printf("\nPlease check the input\n");
+            hour=0;
+            minute=0;
+            digitCounter=0;
+            isInvalidFlag=0;
+        }
+
         printf("\nPlease enter integer value represents a time of day on 24-hour clock.eg:1345:\n");
         fflush(stdout);
         if(fgets(buffer,sizeof buffer, stdin)){
@@ -42,10 +51,25 @@ int main(){
                     }
                     value/=10;
                     ++digitCounter;
-                    printf("\nCurrent digit:%d",digit);
+                    //printf("\nCurrent digit:%d",digit);
                 }
-                //fail when digit is not 4
-                if(digitCounter!=4 && digitCounter!=3) isInvalidFlag=1;
+                //fail when digit is not 3 or 4
+                if(digitCounter!=4 && digitCounter!=3) {
+                    printf("\nError: Digit of number %d is wrong.\n",digit);
+                    isInvalidFlag=1;
+                }
+                else if(hour>23 || hour <0) {
+                    printf("\nError: hour must between 0 to 23.\n");
+                    isInvalidFlag=1;
+                }
+                else if(minute>59 || minute < 0) {
+                    printf("\nError: minute must between 0 to 23.\n");
+                    isInvalidFlag=1;
+                }
+                //All condition satisfied
+                else{
+                    printf("All good!");
+                }
                 printf("hour:%d , minute: %d",hour,minute);
             }
         }
