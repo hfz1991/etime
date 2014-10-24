@@ -156,7 +156,12 @@ int main(){
 
     }
 
-    printf("Result time is %d%d",hour,minute);
+    printf("\nResult time is ");
+    if(hour==0) printf("00");
+    else printf("%d",hour);
+    if(minute==0) printf("00");
+    else printf("%d",minute);
+    printf("\n");
     return 0;
 
 }
