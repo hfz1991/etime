@@ -153,9 +153,9 @@ int main(){
     }
     else
     {
-        minute-=minute2;
-        hour-=hour2;
-        while(minute<-59)
+        minute+=minute2;
+        hour+=hour2;
+        while(minute<0)
         {
             minute+=60;
             hour--;
@@ -168,14 +168,14 @@ int main(){
     }
     
     /*Printing in proper format*/ 
-    printf("\nResult time is ");
+    printf("\n\nResult time is ");
     if(hour==0) printf("00");
     else if (hour<10) printf("0%d",hour);
     else printf("%d",hour);
     if(minute==0) printf("00");
     else if (minute<10) printf("0%d",minute);
     else printf("%d",minute);
-    printf("\n");
+    printf("\n\n");
     
     return 0;
 }
