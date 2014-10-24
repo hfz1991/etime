@@ -1,21 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 int main(){
-    //declare
-    char buffer[100];
-    int digitCounter=0;
-    int timeOfDay;
-    int timeDuration;
-    int isInvalidFlag=0;
-    long value;
-    char *check;
-    int i,digit;
-    int hour=0,minute=0;
+    /*declare*/
+    char buffer[100],buffer2[100];
+    int digitCounter=0,digitCounter2=0;
+    int isInvalidFlag=0,isInvalidFlag2=0;
+    long value,value2;
+    char *check,*check2;
+    int i,digit,i2,digit2;
+    int hour=0,minute=0,hour2=0,minute2=0;
 
-    //Welcome message
+    /*Welcome message*/
     printf("\nThis is an small e-time program");
+    
+    /*Ask input for valid time of day*/
     do
     {
-        //if error prompt error message and initialise value
+        /*if error prompt error message and initialise value*/
         if(isInvalidFlag==1){
             printf("\nPlease check the input\n");
             hour=0;
@@ -28,7 +30,7 @@ int main(){
         fflush(stdout);
         if(fgets(buffer,sizeof buffer, stdin)){
             value=strtol(buffer,&check,0);
-            //Check numerical 
+            /*Check numerical*/ 
             if(!isspace(*check) && *check !=0 )
             {
                 printf("%s is not a valid integer\n",buffer);
@@ -36,7 +38,7 @@ int main(){
             }
             else
             {
-                //count digit
+                /*count digit*/
                 for(i=0;value!=0;i++){
                     digit = value % 10;
                     switch(i){
@@ -51,9 +53,9 @@ int main(){
                     }
                     value/=10;
                     ++digitCounter;
-                    //printf("\nCurrent digit:%d",digit);
+                    /*printf("\nCurrent digit:%d",digit);*/
                 }
-                //fail when digit is not 3 or 4
+                /*fail when digit is not 3 or 4*/
                 if(digitCounter!=4 && digitCounter!=3) {
                     printf("\nError: Digit of number %d is wrong.\n",digit);
                     isInvalidFlag=1;
@@ -66,7 +68,7 @@ int main(){
                     printf("\nError: minute must between 0 to 23.\n");
                     isInvalidFlag=1;
                 }
-                //All condition satisfied
+                /*All condition satisfied*/
                 else{
                     printf("All good!");
                 }
@@ -75,6 +77,64 @@ int main(){
         }
     }while(isInvalidFlag==1);
 
+    /*Ask input for valid time duration*/
+    do
+    {
+        /*if error prompt error message and initialise value*/
+        if(isInvalidFlag2==1){
+            printf("\nPlease check the input\n");
+            hour2=0;
+            minute2=0;
+            digitCounter2=0;
+            isInvalidFlag2=0;
+        }
+
+        printf("\nPlease enter integer value represents a time duration on 24-hour clock.eg:1345:\n");
+        fflush(stdout);
+        if(fgets(buffer2,sizeof buffer2, stdin)){
+            value2=strtol(buffer2,&check2,0);
+            /*Check numerical */
+            if(!isspace(*check2) && *check2 !=0 )
+            {
+                printf("%s is not a valid integer\n",buffer2);
+                isInvalidFlag2=1;
+            }
+            else
+            {
+                /*count digit*/
+                for(i2=0;value2!=0;i2++){
+                    digit2 = value2 % 10;
+                    switch(i2){
+                        case 0:minute2+=digit2;
+                               break;
+                        case 1:minute2+=10*digit2;
+                               break;
+                        case 2:hour2+=digit2;
+                               break;
+                        case 3:hour2+=10*digit2;
+                               break;
+                    }
+                    value2/=10;
+                    ++digitCounter2;
+                    /*printf("\nCurrent digit:%d",digit2);*/
+                }
+                /*fail when digit is not 3 or 4*/
+                if(digitCounter2!=4 && digitCounter2!=3) {
+                    printf("\nError: Digit of number %d is wrong.\n",digit2);
+                    isInvalidFlag2=1;
+                }
+                else if(minute2>59 || minute2 < 0) {
+                    printf("\nError: minute must between 0 to 23.\n");
+                    isInvalidFlag2=1;
+                }
+                /*All condition satisfied*/
+                else{
+                    printf("All good!");
+                }
+                printf("hour:%d , minute: %d",hour2,minute2);
+            }
+        }
+    }while(isInvalidFlag2==1);
     return 0;
 
 }
