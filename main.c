@@ -136,11 +136,12 @@ int main(){
     /*Load data finish*/
 
     /*Start time logic*/
+    minute+=minute2;
+    hour+=hour2;
     /*Check positive or negative for the time duration*/ 
+    /*Format the time*/
     if(hour2>0)
     {
-        minute+=minute2;
-        hour+=hour2;
         while(minute>59)
         {
             minute-=60;
@@ -153,8 +154,6 @@ int main(){
     }
     else
     {
-        minute+=minute2;
-        hour+=hour2;
         while(minute<0)
         {
             minute+=60;
@@ -164,9 +163,9 @@ int main(){
         {
             hour+=24;
         }
-        
+
     }
-    
+
     /*Printing in proper format*/ 
     printf("\n\nResult time is ");
     if(hour==0) printf("00");
@@ -176,6 +175,6 @@ int main(){
     else if (minute<10) printf("0%d",minute);
     else printf("%d",minute);
     printf("\n\n");
-    
+
     return 0;
 }
